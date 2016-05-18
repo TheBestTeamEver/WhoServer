@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% load staticfiles %}
+    {% for level in levels %}
+    <h1>{{ level.name }}</h1>
+    <img src="/media/{{ level.true_photo }}">
+    <img src="/media/{{ level.fake_photo }}">
+    {% endfor %}
+</body>
+</html>
