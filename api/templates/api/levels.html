@@ -7,9 +7,10 @@
 <body>
     {% load staticfiles %}
     {% for level in levels %}
-    <h1>{{ level.name }}</h1>
+    <h1>{{ level.true_name }} vs {{ level.fake_name }}</h1>
     <img src="/media/{{ level.true_photo }}">
     <img src="/media/{{ level.fake_photo }}">
+    <br>
     {% endfor %}
 </body>
 </html>

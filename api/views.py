@@ -13,28 +13,6 @@ from django.http import HttpResponseRedirect
 from .forms import UploadFileForm
 
 
-
-
-def get_true(request, pk):
-    level = get_object_or_404(Level, pk=pk)
-    photo = level.true_photo
-    with open(photo.file.file.name, "rb") as f:
-        return HttpResponse(f.read(), content_type="image/jpeg")
-
-
-def get_fake(request, pk):
-    level = get_object_or_404(Level, pk=pk)
-    photo = level.fake_photo
-    with open(photo.file.file.name, "rb") as f:
-        return HttpResponse(f.read(), content_type="image/jpeg")
-
-
-def get_name(request, pk):
-    level = get_object_or_404(Level, pk=pk)
-    name = level.name
-    return HttpResponse(str(name))
-
-
 def get_level(request, pk):
     level = get_object_or_404(Level, pk=pk)
     context = {'level': level}
@@ -96,9 +74,10 @@ def get_random_urls(request):
     levels = Level.objects.all().order_by('?')[:10]
     response = {
         'data': [{
-                     'name': level.name,
-                     'true': level.true_photo.url,
-                     'fake': level.fake_photo.url
+                     'true_name': level.true_name,
+                     'fake_name': level.fake_name,
+                     'true_photo': level.true_photo.url,
+                     'fake_photo': level.fake_photo.url
                  } for level in levels]
     }
     return JsonResponse(response)

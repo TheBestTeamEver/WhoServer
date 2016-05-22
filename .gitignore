@@ -15,6 +15,9 @@ env/
 build/
 develop-eggs/
 dist/
+/db.sqlite3
+/media/*
+/api/migrations/0*
 downloads/
 eggs/
 .eggs/
