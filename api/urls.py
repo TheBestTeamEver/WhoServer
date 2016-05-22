@@ -28,4 +28,6 @@ urlpatterns = [
     url(r'^get_random_urls/$', views.get_random_urls, name='get_random_urls'),
     url(r'^registration/$', views.registration, name='registration'),
     url(r'^authentication/$', views.authentication, name='authentication'),
+    url(r'^upload/$', views.upload_file, name='upload_file'),
+    url(r'form/$', views.form_view, name='form_view'),
 ]

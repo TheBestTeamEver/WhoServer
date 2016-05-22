@@ -8,6 +8,12 @@ from django.views.decorators.http import require_http_methods
 
 from api.models import Level, SimpleUser
 
+from django.http import HttpResponseRedirect
+
+from .forms import UploadFileForm
+
+
+
 
 def get_true(request, pk):
     level = get_object_or_404(Level, pk=pk)
@@ -96,3 +102,19 @@ def get_random_urls(request):
                  } for level in levels]
     }
     return JsonResponse(response)
+
+
+#MAXIM FORMS
+
+def form_view(request):
+    return render(request, "form.html", {})
+
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("Files uploaded")
+
+
