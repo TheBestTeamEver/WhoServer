@@ -2,7 +2,7 @@ import json
 
 from django.http import HttpResponse
 from django.http.response import JsonResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 
@@ -83,17 +83,13 @@ def get_random_urls(request):
     return JsonResponse(response)
 
 
-#MAXIM FORMS
-
-def form_view(request):
-    return render(request, "form.html", {})
-
-
+# MAXIM FORM
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponse("Files uploaded")
-
-
+    else:
+        form = UploadFileForm()
+        return render_to_response('api/upload.html', {'form': form})
