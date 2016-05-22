@@ -84,6 +84,7 @@ def get_random_urls(request):
 
 
 # MAXIM FORM
+@csrf_exempt
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
