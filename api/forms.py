@@ -4,10 +4,11 @@ from models import Level
 
 
 class UploadFileForm(forms.ModelForm):
-    true = forms.ImageField()
-    fake = forms.ImageField()
+    name = forms.CharField()
+    true_photo = forms.ImageField()
+    fake_photo = forms.ImageField()
 
     class Meta:
         model = Level
-        fields = ('true', 'fake',)
+        fields = ('name', 'true_photo', 'fake_photo',)
 
