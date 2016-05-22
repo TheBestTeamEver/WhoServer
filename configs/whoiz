@@ -1,0 +1,10 @@
+CONFIG = {
+   # 'mode': 'django',
+    'working_dir': '/home/maxim/serv/WhoServer',
+    'args': (
+        '--bind=91.218.230.80:8080',
+        '--workers=1',
+        '--timeout=60',
+        'who.wsgi:application',
+    ),
+}
