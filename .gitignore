@@ -16,7 +16,7 @@ build/
 develop-eggs/
 dist/
 /db.sqlite3
-/media/*
+media/*
 /api/migrations/0*
 downloads/
 eggs/
