@@ -1,13 +1,13 @@
 # WhoServer
 
 ## API
-/api/<номер_уровня>/level/
-/api/all/
-/api/get_top/
-/api/get_random_urls/
-/api/registration/
-/api/authentication/
-/api/upload/
+- /api/<номер_уровня>/level/
+- /api/all/
+- /api/get_top/
+- /api/get_random_urls/
+- /api/registration/
+- /api/authentication/
+- /api/upload/
 
 ## Разворачивание проекта
 

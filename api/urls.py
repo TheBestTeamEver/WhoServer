@@ -19,9 +19,6 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    url(r'^(?P<pk>[0-9]+)/true/$', views.get_true, name='true'),
-    url(r'^(?P<pk>[0-9]+)/fake/$', views.get_fake, name='fake'),
-    url(r'^(?P<pk>[0-9]+)/name/$', views.get_name, name='name'),
     url(r'^(?P<pk>[0-9]+)/level/$', views.get_level, name='level'),
     url(r'^all/$', views.get_all, name='all'),
     url(r'^get_top/$', views.get_top, name='get_top'),
