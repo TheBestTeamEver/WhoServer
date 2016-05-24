@@ -31,7 +31,7 @@ def registration(request):
     login = request.POST.get('login')
     password = request.POST.get('password')
     name = request.POST.get('name')
-    if login or password or name is None:
+    if login is None or password is None or name is None:
         response = {'data': 'No some fields'}
         return JsonResponse(response)
 
@@ -51,7 +51,7 @@ def authentication(request):
     login = request.POST.get('login')
     password = request.POST.get('password')
 
-    if login or password is None:
+    if login is None or password is None:
         response = {'data': 'No some fields'}
         return JsonResponse(response)
 
