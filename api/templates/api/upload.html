@@ -5,13 +5,15 @@
     <title>Title</title>
 </head>
 <body>
+<h1>Привет! Спасибо, что помогаешь нам с контентом)</h1>
 <form action="/api/upload/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="text" name="true_name">
-    <input type="file" name="true_photo"/>
-    <input type="text" name="fake_name"/>
-    <input type="file" name="fake_photo"/>
-    <input type="submit" value="Submit"/>
+    <br>
+    <label for="true_name">Имя: </label><input id="true_name" type="text" name="true_name"/><br>
+    <label for="true_photo">Фото: </label><input id="true_photo" type="file" name="true_photo"/><br><br>
+    <label for="fake_name">Имя похожего человека: </label><input id="fake_name" type="text" name="fake_name"/><br>
+    <label for="fake_photo">Его фото: </label><input id="fake_photo" type="file" name="fake_photo"/><br><br><br>
+    <input type="submit" value="Загрузить!"/>
 </form>
 </body>
 </html>
