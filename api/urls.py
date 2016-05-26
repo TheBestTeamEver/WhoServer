@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^get_random_urls/$', views.get_random_urls, name='get_random_urls'),
     url(r'^authentication/$', views.authentication, name='authentication'),
     url(r'^upload/$', views.upload_file, name='upload_file'),
+    url(r'^put_score/$', views.put_score, name='put_score'),
 ]

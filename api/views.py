@@ -69,6 +69,29 @@ def authentication(request):
         return JsonResponse(response)
 
 
+@csrf_exempt
+@require_http_methods(["POST"])
+def put_score(request):
+    login = request.POST.get('login')
+    score = request.POST.get('score')
+
+    if login is None or score is None:
+        response = {'data': 'fail'}
+
+    try:
+        score = int(score)
+        user = SimpleUser.objects.get(login=login)
+        if user.rating < score:
+            user.rating = score
+            user.save()
+
+        response = {'data': 'Ok'}
+    except Exception:
+        response = {'data': 'fail'}
+
+    return JsonResponse(response)
+
+
 def get_top(request):
     users = SimpleUser.objects.all().order_by('-rating')
     response = {'data': [{'login': u.login, 'rating': u.rating} for u in users]}
