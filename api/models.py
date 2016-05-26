@@ -19,7 +19,6 @@ class Level(models.Model):
 
 class SimpleUser(models.Model):
     login = models.CharField(u'Логин', max_length=64, primary_key=True)
-    name = models.CharField(u'Имя', max_length=64)
     password = models.CharField(u'Пароль', max_length=64)
     rating = models.IntegerField(u'Rating', default=0)
 

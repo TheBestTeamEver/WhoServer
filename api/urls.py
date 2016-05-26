@@ -21,9 +21,9 @@ from . import views
 urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/level/$', views.get_level, name='level'),
     url(r'^all/$', views.get_all, name='all'),
+    url(r'^names/$', views.get_names, name='all'),
     url(r'^get_top/$', views.get_top, name='get_top'),
     url(r'^get_random_urls/$', views.get_random_urls, name='get_random_urls'),
-    url(r'^registration/$', views.registration, name='registration'),
     url(r'^authentication/$', views.authentication, name='authentication'),
     url(r'^upload/$', views.upload_file, name='upload_file'),
 ]

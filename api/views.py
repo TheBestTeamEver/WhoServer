@@ -25,24 +25,26 @@ def get_all(request):
     return render(request, 'api/levels.html', context)
 
 
-@csrf_exempt
-@require_http_methods(["POST"])
-def registration(request):
-    login = request.POST.get('login')
-    password = request.POST.get('password')
-    name = request.POST.get('name')
-    if login is None or password is None or name is None:
-        response = {'data': 'No some fields'}
-        return JsonResponse(response)
+def get_names(request):
+    levels = Level.objects.all()
+    context = {'levels': levels}
+    return render(request, 'api/names.html', context)
 
+
+def check_login(login):
     try:
         SimpleUser.objects.get(login=login)
-        response = {'data': 'Login is already used'}
+        return True
     except Exception:
-        SimpleUser(login=login, password=password, name=name).save()
-        response = {'data': 'Ok'}
+        return False
 
-    return JsonResponse(response)
+
+def check_auth(login, password):
+    try:
+        SimpleUser.objects.get(login=login, password=password)
+        return True
+    except Exception:
+        return False
 
 
 @csrf_exempt
@@ -55,13 +57,16 @@ def authentication(request):
         response = {'data': 'No some fields'}
         return JsonResponse(response)
 
-    try:
-        SimpleUser.objects.get(login=login, password=password)
+    if check_login(login):
+        if check_auth(login, password):
+            response = {'data': 'Ok'}
+        else:
+            response = {'data': 'Wrong login/password'}
+        return JsonResponse(response)
+    else:
+        SimpleUser(login=login, password=password).save()
         response = {'data': 'Ok'}
-    except Exception:
-        response = {'data': 'Wrong login/password'}
-
-    return JsonResponse(response)
+        return JsonResponse(response)
 
 
 def get_top(request):
