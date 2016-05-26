@@ -57,6 +57,10 @@ def authentication(request):
         response = {'data': 'No some fields'}
         return JsonResponse(response)
 
+    if login == "" or password == "":
+        response = {'data': 'No some fields'}
+        return JsonResponse(response)
+
     if check_login(login):
         if check_auth(login, password):
             response = {'data': 'Ok'}
